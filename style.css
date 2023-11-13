@@ -45,14 +45,15 @@ main::before {
 
 .logo{
     position: absolute;
-    color: white;
     font-size: 3rem;
     top: 10px;
     left: 10px;
 }
 
 img {
-    width: 20%;
+    width: 15%;
+    background-color: rgb(236, 232, 232);
+    border-radius: 50%;
 }
 
 .counters {
