@@ -72,7 +72,7 @@ img {
     border: 2px solid white;
     border-radius: 10%;
     background-color: #cbd1d8;
-    /* box-shadow: 10 0 0 10 #ffffff; */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 .numbers {
     font-size: 5rem;
