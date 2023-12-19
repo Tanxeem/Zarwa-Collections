@@ -1,40 +1,29 @@
-let days =document.querySelector(".days");
-let hours =document.querySelector('.hours');
-let minutes =document.querySelector('.minutes');
-let seconds =document.querySelector('.seconds');
+const days =document.querySelector(".days");
+const hours =document.querySelector('.hours');
+const minutes =document.querySelector('.minutes');
+const seconds =document.querySelector('.seconds');
 
-let newyear = new Date("Feb 1, 2024 00:00:00:00").getTime();
+const currentYear = new Date().getFullYear();
 
-updatecountdown();
+const newYearTime = new Date(`Mar 1 ${currentYear + 1} 00:00:00`);
 
 function updatecountdown () {
-    let now = new Date().getTime();
-    let downtime = newyear - now;
+    const currentTime = new Date();
+    const diff = newYearTime - currentTime;
 
-    let second = 1000;
-    let minute = second * 60;
-    let hour = minute * 60;
-    let day = hour * 24;
 
-    let d = Math.floor(downtime / day);
-    let h = Math.floor((downtime % day)/hour);
-    let m = Math.floor((downtime % hour)/minute);
-    let s = Math.floor((downtime % minute)/second);
-
-    if(h < 10) {
-        h = "0" +h;
-    }
-    if(m < 10) {
-        m = "0" + m;
-    }
-    if(s < 10) {
-        s = "0" + s;
-    }
+    let d = Math.floor(diff / 1000 / 60 / 60 / 24);
+    let h = Math.floor(diff / 1000 / 60 / 60) % 24;
+    let m = Math.floor(diff / 1000 / 60) % 60;
+    let s = Math.floor(diff / 1000) % 60;
 
     days.innerHTML = d;
-    hours.innerHTML = h;
-    minutes.innerHTML = m;
-    seconds.innerHTML = s;
+    hours.innerHTML = h < 10 ? '0' + h : h;
+    minutes.innerHTML = m < 10 ? '0' + m : m;
+    seconds.innerHTML = s < 10 ? '0' + s : s;
 
-    setTimeout(updatecountdown,1000);
 }
+
+setInterval(updatecountdown,1000);
+
+updatecountdown();
