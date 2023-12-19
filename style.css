@@ -7,8 +7,11 @@
 }
 
 main {
-    background: rgb(0,212,255);
-    background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,121,97,1) 43%, rgba(2,0,36,1) 100%);
+    /* background: rgb(0,212,255); */
+    /* background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,121,97,1) 43%, rgba(2,0,36,1) 100%); */
+    background-image: url(img/mirha1.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
     min-height: 100vh;
     position: relative;
     z-index: -1;
@@ -51,7 +54,7 @@ main::before {
 }
 
 img {
-    width: 15%;
+    width: 10%;
     background-color: rgb(236, 232, 232);
     border-radius: 50%;
 }
@@ -59,7 +62,7 @@ img {
 .counters {
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     grid-gap: 4rem;
     margin: 2rem 0;
     font-size: 1.5rem;
@@ -72,7 +75,7 @@ img {
     padding: 3rem 4rem;
     border: 2px solid white;
     border-radius: 10%;
-    background-color: #cbd1d8;
+    background-color: rgba(241, 237, 237, 0.05);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 .numbers {
