@@ -1,29 +1,40 @@
-const days =document.querySelector(".days");
-const hours =document.querySelector('.hours');
-const minutes =document.querySelector('.minutes');
-const seconds =document.querySelector('.seconds');
+const daysElement = document.getElementById("days");
+const hoursElement = document.getElementById("hours");
+const minutesElement = document.getElementById("minutes");
+const secondsElement = document.getElementById("seconds");
 
-const currentYear = new Date().getFullYear();
+// Set the target date (March 1st of the next year)
+let targetDate = new Date(`Mar 1 ${new Date().getFullYear() + 0} 00:00:00`);
 
-const newYearTime = new Date(`Mar 1 ${currentYear + 1} 00:00:00`);
-
-function updatecountdown () {
+function updateCountdown() {
     const currentTime = new Date();
-    const diff = newYearTime - currentTime;
+    const timeDifference = targetDate - currentTime;
 
+    // Check if the target date has passed
+    if (timeDifference <= 0) {
+        clearInterval(countdownInterval); // Stop the countdown
+        daysElement.innerHTML = "00";
+        hoursElement.innerHTML = "00";
+        minutesElement.innerHTML = "00";
+        secondsElement.innerHTML = "00";
+        return;
+    }
 
-    let d = Math.floor(diff / 1000 / 60 / 60 / 24);
-    let h = Math.floor(diff / 1000 / 60 / 60) % 24;
-    let m = Math.floor(diff / 1000 / 60) % 60;
-    let s = Math.floor(diff / 1000) % 60;
+    // Calculate days, hours, minutes, and seconds
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-    days.innerHTML = d;
-    hours.innerHTML = h < 10 ? '0' + h : h;
-    minutes.innerHTML = m < 10 ? '0' + m : m;
-    seconds.innerHTML = s < 10 ? '0' + s : s;
-
+    // Update the DOM with leading zeros
+    daysElement.innerHTML = days < 10 ? `0${days}` : days;
+    hoursElement.innerHTML = hours < 10 ? `0${hours}` : hours;
+    minutesElement.innerHTML = minutes < 10 ? `0${minutes}` : minutes;
+    secondsElement.innerHTML = seconds < 10 ? `0${seconds}` : seconds;
 }
 
-setInterval(updatecountdown,1000);
+// Update the countdown every second
+const countdownInterval = setInterval(updateCountdown, 1000);
 
-updatecountdown();
+// Initial call to avoid delay
+updateCountdown();
